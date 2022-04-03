@@ -2,6 +2,10 @@ li {
     list-style: none;
 }
 
+input {
+    outline: none;
+}
+
 .main {
     width: 960px;
     height: 400px;
@@ -37,6 +41,11 @@ li {
 .firstnav .liactive {
     border-bottom: 2px solid #fff;
     z-index: 9;
+}
+
+#tab input {
+    width: 80%;
+    height: 60%;
 }
 
 .firstnav li i {

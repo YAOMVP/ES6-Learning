@@ -20,6 +20,8 @@
                  this.lis[i].index = [i];
                  this.lis[i].onclick = this.toggleTab; //不需要 toggleTab（），因为是要先click才调用，加上（）就直接调用了
                  this.remove[i].onclick = this.removeTab; //当前的remove没有索引号，父亲li有
+                 this.spans[i].ondblclick = this.editTab;
+                 this.sections[i].ondblclick = this.editTab;
 
              }
          }
@@ -28,6 +30,7 @@
              this.lis = this.main.querySelectorAll('li');
              this.sections = this.main.querySelectorAll('section');
              this.remove = this.main.querySelectorAll('.fas');
+             this.spans = this.main.querySelectorAll('.firstnav li span:first-child');
 
          }
          // 切换功能 toggle 
@@ -68,11 +71,33 @@
              that.lis[index].remove();
              that.sections[index].remove();
              that.init();
+             //删除的不是选中状态的li的时候，原来选中的li保持不变
+             if (document.querySelector('.liactive')) return;
              index--;
              that.lis[index] && that.lis[index].click();
          }
          //修改功能 edit 
-     editTab() {}
+     editTab() {
+         //先获取文字
+         var str = this.innerHTML;
+         //双击禁止选定文字
+         window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+         this.innerHTML = '<input type = "text" />';
+         var input = this.children[0];
+         input.value = str;
+         input.select(); //文本框的文字处于选定状态；
+         //离开文本框就把里边的值给父亲span
+         input.onblur = function() {
+                 this.parentNode.innerHTML = this.value;
+             }
+             //按下回车也可以将文本框里的值给span
+         input.onkeyup = function(e) {
+             if (e.keyCode === 13) {
+                 //手动调用表单失去焦点事件 不需要鼠标离开操作 键盘的失去焦点事件都不需要on 不像鼠标 
+                 this.blur();
+             }
+         }
+     }
  }
 
  new Tab('#tab');
