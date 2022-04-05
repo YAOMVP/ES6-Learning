@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>search products</title>
+    <style>
+        table {
+            width: 400px;
+            border: 1px solid #000;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+        
+        td,
+        th {
+            border: 1px solid #000;
+            text-align: center;
+        }
+        
+        input {
+            width: 100px;
+        }
+        
+        .search {
+            width: 1000px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="search">
+        According to the price: <input type="text" class="start"> - <input type="text" class="end"> <button class="search-price">search</button> According to the name: <input type="text" class="product"> <button class="search-pro">search</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Name of the product</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        //新数组动态添加数据  The new array dynamically adds data
+        var data = [{
+                id: 1,
+                pname: 'Mi',
+                price: 3999
+            }, {
+                id: 2,
+                pname: 'OPPO',
+                price: 999
+            }, {
+                id: 3,
+                pname: 'Honor',
+                price: 1299
+            }, {
+                id: 4,
+                pname: 'Hello',
+                price: 1999
+            }, ]
+            //1.for each遍历每一个对象 把对象渲染到页面中
+            //获取元素
+        var tbody = document.querySelector('tbody'); //tbody
+        var search_price = document.querySelector('.search-price'); //button
+        var start = document.querySelector('.start') //start表单
+        var end = document.querySelector('.end') //end表单
+        var product = document.querySelector('.product') // 表单
+        var search_pro = document.querySelector('.search-pro'); //button
+        setData(data);
+        //把数据渲染到页面中
+        function setData(mydata) {
+            //清空原来tbody里的数据
+            tbody.innerHTML = '';
+            mydata.forEach(function(value) {
+                //创建行 有四组所以自动创建了四行
+                var tr = document.createElement('tr');
+                //每一行创建三个单元格
+                tr.innerHTML = '<td>' + value.id + '</td><td>' + value.pname + '</td><td>' + value.price + '</td>';
+                //有了行追加到tbody里边
+                tbody.appendChild(tr);
+            })
+        }
+        //2.filter-根据价格查询商品 Check the price of the product
+        //点击了按钮 就可根据商品价格筛选数组里边的对象
+        search_price.addEventListener('click', function() {
+                //返回的是新数组，别忘了接过来
+                var newData = data.filter(function(value) {
+                    return value.price >= start.value && value.price <= end.value;
+                })
+                console.log(newData);
+                //3.把筛选完的对象渲染到页面当中
+                setData(newData);
+            })
+            //4.some-根据商品名称查找商品 Check the name of the product(因为名字是唯一的,找到这个元素就不再进行循环，效率更高)
+        search_pro.addEventListener('click', function() {
+            var arr = [];
+            data.some(function(value) {
+                    //因为some返回的是布尔值 所以我们需要一个判断条件
+                    if (value.pname === product.value) {
+                        //找到了就能把对象添加到数组当中
+                        arr.push(value);
+                        return true; //return 后边必须写true,写true就是找到了对象，不在进行下边的循环了
+                    }
+                })
+                //把拿到的数据渲染到页面中 ！返回的是对象 不是数组 ！
+            setData(arr);
+        })
+    </script>
+</body>
+
+</html>
