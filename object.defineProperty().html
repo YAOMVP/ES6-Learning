@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object,defineProperty()</title>
+</head>
+
+<body>
+    <script>
+        var obj = {
+                id: 1,
+                pname: 'Mi',
+                price: 1999
+            }
+            // Before: add storage, and edit the price
+            // obj.storage = 1000;
+            // obj.price = 99;
+            // console.log(obj);
+            //After: 1.obj修改哪一个对象 2.prop修改哪一个属性 3.descriptor决定属性的特性（对象的格式书写）
+            // 3.（1）value:设置属性的值  3.（2）writable：值是狗可以重写 true/false      /// 3.（3）enumerable 可列举的 不想让别人看到可隐藏的
+            // 3.（4）configurable 能不能被删除，能不能再次修改特性 如果为false 则默认不能被删除 不能修改里边的特性
+        Object.defineProperty(obj, 'storage', {
+            value: 1000,
+            enumerable: true
+        })
+        console.log(obj);
+
+
+        Object.defineProperty(obj, 'price', {
+            value: 9.9
+        })
+        console.log(obj);
+
+
+        Object.defineProperty(obj, 'id', {
+            //不允许修改 默认的也是false
+            writable: false
+        })
+        obj.id = 22;
+        console.log(obj);
+
+
+        Object.defineProperty(obj, 'address', {
+            value: '北京市海淀区',
+            // enumerable 默认的是false
+            enumerable: false,
+            configurable: false //改成false之后 address属性不能被删除
+        })
+        console.log(obj);
+        console.log(Object.keys(obj));
+        delete obj.address;
+        console.log(obj);
+        delete obj.pname;
+        console.log(obj);
+
+
+        Object.defineProperty(obj, 'address', {
+            value: '北京市海淀区',
+            //如果为false 不允许修改属性值 默认值是false
+            writable: true,
+            // enumerable 默认的是false
+            enumerable: true,
+            configurable: true //改成false之后 address属性不能被删除
+        })
+        console.log(obj.address);
+    </script>
+</body>
+
+</html>
