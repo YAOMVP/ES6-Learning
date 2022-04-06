@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>trim</title>
+</head>
+
+<body>
+    <input type="text"><button>click</button>
+    <div>
+
+    </div>
+    <script>
+        //trim 去除左右两边的字符串空格 并且返回一个新的字符串
+        var str = '   andy   ';
+        console.log(str);
+        str1 = str.trim();
+        console.log(str1);
+        var input = document.querySelector('input');
+        var btn = document.querySelector('button');
+        var div = document.querySelector('div');
+        btn.onclick = function() {
+            var str = input.value.trim();
+            if (str === '') { //去除空格
+                alert('type sth');
+            } else {
+                div.innerHTML = str;
+            }
+        }
+    </script>
+</body>
+
+</html>
