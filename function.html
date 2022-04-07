@@ -11,14 +11,14 @@
 <body>
     <script>
         //函数的调用方式
-        //1.普通函数
+        //1.普通函数 this指向window
         function fn() {
             console.log('hello');
         }
-        fn();
-        // fn.call() 
+        window.fn();
+        // fn.call();
 
-        //2.对象的方法
+        //2.对象的方法 this指向的是对象o
         var o = {
             sayHi: function() {
                 console.log('hello');
@@ -26,17 +26,20 @@
         }
         o.sayHi();
 
-        //3.构造函数
+        //3.构造函数 this指向 ldh实例对象 原型对象里面的this指向的也是ldh这个实例对象
         function Star() {};
-        new Star();
+        Star.prototype.sing = function() {
 
-        //4.绑定事件的函数
+        }
+        var ldh = new Star();
+
+        //4.绑定事件的函数  指向的是函数的调用者btn按钮对象
         btn.onclick = function() {};
 
-        //5.定时器函数 定时器自动1s调用一次
-        setInterval(function() {}, 1000);
+        //5.定时器函数 定时器自动1s调用一次  定时器的this指向的也是window
+        window.setTimeout(function() {}, 1000);
 
-        //6.立即执行函数 自动调用
+        //6.立即执行函数 自动调用 this指向window对象
         (function() {
             console.log('hello');
         })()
