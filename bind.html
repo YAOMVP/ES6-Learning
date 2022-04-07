@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bind </title>
+</head>
+
+<body>
+    <button>click</button>
+    <script>
+        var o = {
+            name: 'andy'
+        }
+
+        function fn(a, b) {
+            console.log(a + b);
+        }
+        var f = fn.bind(o, 1, 2)
+
+
+
+
+        var btn = document.querySelector('button');
+        btn.click = function() {
+            //click button then disabled
+            this.disabled = true; //这个this 指向的是btn
+            //3s start again  定时器函数里面的this 指向的是window
+            //bind要写在定时器函数的外边
+            //但是 this 又在btn.onclick函数的里边 所以this指向btn这个对象 又因为函数绑定了bind方法，又把函数内部的bind指向了btn
+            setTimeout(function() {
+                this.disabled = false;
+            }.bind(this), 3000)
+        }
+    </script>
+</body>
+
+</html>
