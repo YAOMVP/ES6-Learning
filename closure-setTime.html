@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>closure</title>
+</head>
+
+<body>
+    <ul class="nav">
+        <li>pizza</li>
+        <li>hamburger</li>
+        <li>noodle</li>
+        <li>rice</li>
+    </ul>
+    <script>
+        var lis = document.querySelector('.nav').querySelectorAll('li');
+        for (var i = 0; i < lis.length; i++) {
+            //只要是在立即执行函数里边的任何一个函数，都可以使用立即执行函数的i变量
+            (function(i) {
+                setTimeout(function() {
+                    console.log(lis[i].innerHTML);
+                }, 3000)
+            })(i)
+        }
+    </script>
+</body>
+
+</html>
