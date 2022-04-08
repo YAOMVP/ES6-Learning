@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>closure</title>
+</head>
+<ul class="nav">
+    <li>pizza</li>
+    <li>hamburger</li>
+    <li>noodle</li>
+    <li>rice</li>
+</ul>
+
+<body>
+    <script>
+        // function fn() {
+        //     var num = 10;
+
+        //     // function fun() {
+        //     //     console.log(num);
+        //     // }
+        //     // return fun;
+        //     return function() {
+        //         console.log(num);
+        //     }
+        // }
+        // fn();
+        // //fn 外面的作用域可以访问fn 内部的局部变量
+
+
+        //before 
+        var lis = document.querySelector('.nav').querySelectorAll('li');
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].index = i;
+            lis[i].onclick = function() {
+                console.log(this.index);
+            }
+        }
+        //after use closure to get 'li'index
+        for (var i = 0; i < lis.length; i++) {
+            //利用for循环创建了4个立即执行函数
+            (function(i) {
+                lis[i].onclick = function() {
+                    console.log(i);
+                }
+            })(i);
+        }
+    </script>
+</body>
+
+</html>
