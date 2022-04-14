@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arrow function and 'this'</title>
+</head>
+
+<body>
+    <script>
+        //箭头函数被定义在哪里 就指向哪里
+
+
+        //使用function关键字定义一个fn函数  
+        // 再定义一个obj对象 ，对象当中有一个name属性，值为zhangsan
+        //调用fn()  用call方法调用，因为call可以改变fn中的内部指向 fn.call(obj),将fn函数内部this指向obj对象  ②也就是在fn函数当中输出console.log（this），this关键字指向obj里边的对象
+        //再在fn当中 返回一个匿名函数 ，且是个箭头函数
+        //在箭头函数中输出this关键字的值
+        //箭头函数  没有自己的this  被定义在哪里 就指向哪里！！！！！
+        //在题中 箭头函数被定义在fn函数的内部，箭头函数中的this指向的就是fn函数中的this 所以箭头函数中的this指向的也是obj对象 
+        //验证：用resFn变量接受fn函数的返回结果
+        //再用resFn()调用匿名函数
+
+
+        function fn() {
+            console.log(this); //②this关键字指向obj对象
+            return () => {
+                console.log(this);
+            }
+        }
+        const obj = {
+            name: 'zhangsan'
+        };
+
+        const resFn = fn.call(obj) //将fn函数的内部this 指向obj对象 紧接着②  
+            //再用resFn变量接受fn函数的返回结果
+        resFn();
+    </script>
+</body>
+
+</html>
