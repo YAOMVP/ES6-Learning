@@ -1,9 +1,13 @@
 let person = {
     name: 'banzhang',
     age: 18,
-    sex: '男'
+    sex: '男',
+    sing: function(sha) {
+        console.log(sha);
+    }
 }
 console.log(person);
+person.sing("shab");
 
 function createPerson(name, age, sex) {
     let person = {}
