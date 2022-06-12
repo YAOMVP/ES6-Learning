@@ -10,71 +10,57 @@
 
 <body>
     <script>
-        /*  var obj = {
-                                                        id: 1,
-                                                        pname: 'Mi',
-                                                        price: 1999
-                                                    }
-                                                    // Before: add storage, and edit the price
-                                                    // obj.storage = 1000;
-                                                    // obj.price = 99;
-                                                    // console.log(obj);
-                                                    //After: 1.obj修改哪一个对象 2.prop修改哪一个属性 3.descriptor决定属性的特性（对象的格式书写）
-                                                    // 3.（1）value:设置属性的值  3.（2）writable：值是狗可以重写 true/false      /// 3.（3）enumerable 可列举的 不想让别人看到可隐藏的
-                                                    // 3.（4）configurable 能不能被删除，能不能再次修改特性 如果为false 则默认不能被删除 不能修改里边的特性
-                                                Object.defineProperty(obj, 'storage', {
-                                                    value: 1000,
-                                                    enumerable: true
-                                                })
-                                                console.log(obj);
-
-
-                                                Object.defineProperty(obj, 'price', {
-                                                    value: 9.9
-                                                })
-                                                console.log(obj);
-
-
-                                                Object.defineProperty(obj, 'id', {
-                                                    //不允许修改 默认的也是false
-                                                    writable: false
-                                                })
-                                                obj.id = 22;
-                                                console.log(obj);
-
-
-                                                Object.defineProperty(obj, 'address', {
-                                                    value: '北京市海淀区',
-                                                    // enumerable 默认的是false
-                                                    enumerable: false,
-                                                    configurable: false //改成false之后 address属性不能被删除
-                                                })
-                                                console.log(obj);
-                                                console.log(Object.keys(obj));
-                                                delete obj.address;
-                                                console.log(obj);
-                                                delete obj.pname;
-                                                console.log(obj);
-
-
-                                                Object.defineProperty(obj, 'address', {
-                                                    value: '北京市海淀区',
-                                                    //如果为false 不允许修改属性值 默认值是false
-                                                    writable: true,
-                                                    // enumerable 默认的是false
-                                                    enumerable: true,
-                                                    configurable: true //改成false之后 address属性不能被删除
-                                                })
-                                                console.log(obj.address); */
-
         let obj = {
                 id: 1,
                 name: "Mi",
                 price: 1999
             }
-            //传统方式添加属性：
-        obj.storage = 1000;
+            //obj.storage = 1000;传统方式添加属性
+
+        // Object.defineProperty(对象，"需要定义或者修改属性的名字"，目标属性所拥有的特征)  Object.defineProperty(obj,prop,descriptor)
+
+        /* descriptor:😝我忘了 要以对象的格式书写😝
+        1.value：设置值的属性
+        2.writable：是否可以重写  true|false 默认false
+        3.enumerable:是否可以遍历出来(就是后台显示出来) 默认false
+        4.configurable:是否可以被删除或者再次修改特性 默认false不允许被删除
+        */
+
+        Object.defineProperty(obj, "storage", {
+            value: 1000 //😊值就是多少
+        });
         console.log(obj);
+
+        Object.defineProperty(obj, "id", {
+            writable: false //😊其实默认的就是false
+        })
+        obj.id = 2; //输出的id还是1，因为writable的值是false时不能修改，想修改改成true就ok
+        console.log(obj);
+
+
+        /* 😊// Object.keys(对象)😊把对象直接放在数组里边了，以后forEach遍历数组就可以了 
+        let array = Object.keys(obj) //可获得obj对象里的所有属性的名字的数组形式
+        console.log(array); 
+        */
+
+        Object.defineProperty(obj, "address", {
+            value: "北京市海淀区",
+            enumerable: false, //😊其实默认的就是false  不想让页面显示出来
+            configurable: false //😊不允许被删除  现在我设置的configurable为不可以修改特性，底下在弄一个defineProperty的configurable：true是不行的
+        })
+        console.log(obj);
+        // console.log(Object.keys(obj)); //😊用Object.keys(obj)看看能否打印出来address对象
+        delete obj.address;
+        console.log(obj);
+
+
+
+        Object.defineProperty(obj, "address", {
+            value: "北京市海淀区",
+            enumerable: true, //😊其实默认的就是false  不想让页面显示出来
+            configurable: true //😊不允许被删除  上边的configurable:false，不让修改了
+        })
+        console.log(obj.address); //改了白改报错了
     </script>
 </body>
 
