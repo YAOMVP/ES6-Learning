@@ -53,3 +53,50 @@
 
 Array.prototype is the prototype of the num array, since num is linked to that prototype, therefore, num array has access to all that methods, like the map().
 
+
+
+
+
+## Prototype inheritance
+
+![1671238871063](README.assets/1671238871063.png)==Coz any object has access to the methods and properties from **its prototype**, and prototype of olivia which is _ _ proto_ _ is Person.prototype.   Each object has a special property called __proto__==
+
+
+
+The **prototype of the olivia object** is essentially the **prototype property** of the constructor function.~例如下~ 
+
+```javascript
+console.log(olivia.__proto__ === Person.prototype)  //true
+```
+
+~再解释~  olivia's prototype which is the  olivia._ _proto _ _ is the prototype property of the Person constructor function.
+
+
+
+
+
+```javascript
+console.log(Person.prototype.isPrototypeOf(olivia))  //true
+//Person.prototype is indeed the prototype of olivia.
+console.log(Person.prototype.isPrototypeOf(Person))  //false
+//改成： Person.prototypeOfLinkedObjects  <-> prototype
+```
+
+
+
+~prototype添加继承的proprty：如下图~
+
+![1671241055588](README.assets/1671241055588.png)
+
+
+
+
+
+## Challange
+
+![1671247114866](README.assets/1671247114866.png)
+
+
+
+
+
