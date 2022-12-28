@@ -28,37 +28,51 @@
 
 
 
+// const Car = function(make, speed) {
+//     this.make = make;
+//     this.speed = speed;
+// }
+
+// const bmw = new Car("BMW", 120);
+// const mercedes = new Car("Mercedes", 95);
 
 
+// Car.prototype.accelerate = function() {
+//     this.speed += 10; //this.speed = this.speed +10;
+//     console.log(`${this.make} is ${this.speed + 10}km/h`);
+// }
+// Car.prototype.break = function() {
+//     this.speed -= 5;
+//     console.log(`${this.make} is ${this.speed + 10}km/h`);
+// }
+// bmw.accelerate();
+// bmw.accelerate();
+// bmw.accelerate();
+// bmw.break();
 
+class Car {
+    constructor(make, speed) {
+        this.make = make;
+        this.speed = speed;
+    }
+    accelerate() {
+        this.speed += 10; //this.speed = this.speed +10;
+        console.log(`${this.make} is ${this.speed + 10}km/h`);
+    }
+    break () {
+        this.speed -= 5;
+        console.log(`${this.make} is ${this.speed + 10}km/h`);
+    }
 
+    get speedUs() {
+        return this.speed / 1.6;
+    }
 
-
-
-
-
-
-
-
-
-const Car = function(make, speed) {
-    this.make = make;
-    this.speed = speed;
+    set speedUs(value) {
+        this.speed = value * 1.6
+    }
 }
-
-const bmw = new Car("BMW", 120);
-const mercedes = new Car("Mercedes", 95);
-
-
-Car.prototype.accelerate = function() {
-    this.speed += 10; //this.speed = this.speed +10;
-    console.log(`${this.make} is ${this.speed + 10}km/h`);
-}
-Car.prototype.break = function() {
-    this.speed -= 5;
-    console.log(`${this.make} is ${this.speed + 10}km/h`);
-}
-bmw.accelerate();
-bmw.accelerate();
-bmw.accelerate();
-bmw.break();
+const ford = new Car("Ford", 120);
+console.log(ford.speedUs); //Use as a properities(get)
+ford.speedUs = 50; //Just use to set as a property
+console.log(ford); //80   50*1.6=80

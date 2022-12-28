@@ -1,5 +1,5 @@
-# ES6-Learning
-# ES6
+# ES6-Learning Review
+# Constructor and prototype
 
 ## 4 Foundamental principles of OOP
 
@@ -23,13 +23,13 @@
 
 
 
-### Polymorphism
+### Poly'morphism~多态性~
 
 ![1671107745549](README.assets/1671107745549.png)
 
  
 
-## Prototypes
+## :sunglasses:Prototypes p197~回顾~
 
 1.Each object has a prototype.
 
@@ -92,7 +92,7 @@ console.log(Person.prototype.isPrototypeOf(Person))  //false
 
 
 
-## Challange
+### Challenge  prototype
 
 ![1671247114866](README.assets/1671247114866.png)
 
@@ -100,3 +100,147 @@ console.log(Person.prototype.isPrototypeOf(Person))  //false
 
 
 
+##Class
+
+![1671248398451](README.assets/1671248398451.png)
+
+
+
+### Getters and setters
+
+![1671498933700](README.assets/1671498933700.png)
+
+
+
+磨石视频：
+
+Getters: We can read the *fullName* like a **property**.
+
+![1671498986641](README.assets/1671498986641.png)
+
+
+
+Setters:We can set it from the outside.
+
+![1671499015777](README.assets/1671499015777.png)
+
+
+
+###Challenge  Class/set get
+
+![1671499451375](README.assets/1671499451375.png)
+
+
+
+## Object.create 
+
+==Used For: Defining prototype manually==
+
+When we use the **new** operator in constructor function or classes, it automatically sets the **prototype** of the instances to the *constructor prototype proterty*.
+
+ With Object.create, we can set the prototype of objects manually to any object.
+
+In the example. we manually set the **prototype of the steven object to the PersonProto object**.  (PersonProto === steven._ _ proto _ _)
+
+The two object are linked through the _ _proto_ _ proterty.
+
+The big difference is that we did not need any constructor function and no prototype property at all.
+
+![1671703891253](README.assets/1671703891253.png)
+
+
+
+![1671704309050](README.assets/1671704309050.png)
+
+The big takeaway~最大收获~ is
+
+==Object.create creates a new object, and the prototype of that object will be the object that we passed in.==
+
+
+
+### :sunglasses:Use 3 ways inheritance p5
+
+- Constructor functions
+- ES6 Classes
+- Object.create()
+
+==call方法  1).可以调用函数  2).改变this指向==
+
+![1671705603875](README.assets/1671705603875.png)
+
+
+
+![1671705855611](README.assets/1671705855611.png)
+
+
+
+##Challenge parent.call(this,   ,  )
+
+![1671505485026](README.assets/1671505485026.png)
+
+
+
+## Static
+
+**Static methods are not available on the instances, ** sometimes they are still useful to implement ablout a class or a constructor function.
+
+![1671701149684](README.assets/1671701149684.png)
+
+
+
+
+
+
+
+## Encapsulation and data privacy~封装性和数据隐私~
+
+Encapsulation: To keep some properties and methods private inside the class, so they are not accessible from outside of the class.
+
+2 reasons that we need encapsulation and data privacy
+
+- To prevent code from outside of a class to accidently manipulate a class or data inside the class.
+-  External code does not rely on these private methods, therefore the code will not break when we do internal changes.
+
+
+
+
+
+## Class fields and methods
+
+- Public fields: Present on all the instances that we are creating through the class. Thay are not on the prototype.
+
+- Private fields: The properties are not accessible from the outside.
+
+- Public methods
+
+- Private methods
+
+  (There is also the static version)
+
+
+
+## Chinning Challenge (return~别忘记~)
+
+![1671764261397](README.assets/1671764261397.png)
+
+
+
+
+
+ # mapty
+
+## User stories
+
+![1672190342589](README.assets/1672190342589.png)
+
+for example:
+
+![1672190431814](README.assets/1672190431814.png)
+
+
+
+![1672190647384](README.assets/1672190647384.png)
+
+
+
+![1672190988946](README.assets/1672190988946.png)
