@@ -244,3 +244,66 @@ for example:
 
 
 ![1672190988946](README.assets/1672190988946.png)
+
+
+
+
+
+
+
+
+
+
+
+# Synchronous p31
+
+- Most code is synchronous 
+- Synchronous code is executed line by line
+
+
+
+![1672542146518](README.assets/1672542146518.png)
+
+
+
+Alert is blocking synchronous code. Only after we click ok, the window disappears, the next line can run!
+
+**Most of the time synchronous code is fine, and makes perfect sense, but the execution would have to wait, for example for a 5 seconds timer to finish. That would be terrible, coz meanwhile nothing happed during the 5 seconds.**
+
+
+
+
+
+The callback is asynchronous, it is only going to be executed after the timer has finished. That is non-blocking. The rest of the code can keep running normally.
+
+When the timer finishes after 5 seconds, the callback function will be executed.
+
+Asynchronous coordinating behavior of a program over a period time.
+
+![1672543047171](README.assets/1672543047171.png)
+
+![1672543126361](README.assets/1672543126361.png)
+
+
+
+
+
+for example
+
+![1672544192812](README.assets/1672544192812.png)
+
+
+
+
+
+# AJAX
+
+Asynchronous Javascript And XML(xml Is widely used to **transmit data on the web**, recently we don ot use XML anymore, use JSON, just a javascript object convert in into string.)
+
+
+
+
+
+# API
+
+![1672546166370](README.assets/1672546166370.png)
