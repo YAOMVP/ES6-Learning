@@ -307,3 +307,106 @@ Asynchronous Javascript And XML(xml Is widely used to **transmit data on the web
 # API
 
 ![1672546166370](README.assets/1672546166370.png)
+
+
+
+# :sunglasses:Request-response model~请求响应模型~ / Client-server architecture~客户端-服务器架构~
+
+![1672713492444](README.assets/1672713492444.png)
+
+When we try to access a web server, the browser which is the client, sends a request to the server, and then the server will send back a response,  that response contains the data, or the web page that we requested.  :
+
+
+
+![1672714229588](README.assets/1672714229588.png)
+
+
+
+Every URL gets~有~ an HTTP(Hypertext Transfer protocol~超文本传输协议~) and HTTPS(is encrypted using TLS or SSL), which is for the ==protocol==. 
+
+Then we have the ==Domain name==, (rest..eu), after a slash we have a so-called ==Resource== that we want to access.
+
+Now the ==Domain name==(restc..eu) is not the real address of the server that we are trying to access, is just a name that easy for us to remember.
+
+
+
+![1672714643752](README.assets/1672714643752.png)
+
+We need a way to convert the ==Domain name== to the real address of the server, that happens through a so-called ==DNS== stands for Domain name server.
+
+
+
+![1672715209886](README.assets/1672715209886.png)
+
+The first step that happens when we access any web server, is the browser makes a request to a DNS, the DNS will match the web address of the URL to the server's real IP address, (this happens through the Internet service provider.) after the IP address has been sent back to the browser, we can finally call it.
+
+
+
+
+
+![1672715009131](README.assets/1672715009131.png)
+
+ This is the real address looks like, it has the protocol, the IP address, and the port(think like a sub address) that we access on the server.
+
+
+
+![1672715317804](README.assets/1672715317804.png)
+
+Once we have the real IP address, a TCP socket connection is established between the browser and the server. The connection is kept alive for the entire time that transfer all files of the website.
+
+- TCP Transmission control protocol~传输控制协议~.   IP Internet Protocol ~互联网协议~ They are communication protocols(a system of the rules that allows 2 or more parties to communicate.) that defines how data travels across the web.
+
+
+
+![1672715563608](README.assets/1672715563608.png)
+
+Then the request that we make is an http request, after TCP/IP, HTTP is another communication protocol, that allows the clients and the server to communciate, that works by sending requests and response messages from clients to the server.
+
+
+
+ A request message:
+
+![1672716167386](README.assets/1672716167386.png)
+
+- Start line: the (/rest/v2) which is the resource now it as the target in the HTTP request, so the server can figure out what to do with it.
+
+- request headers: some information that we sent about the request itself.(What browser that we use, the user's language...).
+- request body:will contain the data that we are sending, like the html form.
+
+ 
+
+Our request is formed, and now hits the server, and then working on it until it has our data or website ready to send back using http response.
+
+
+
+![1672716535357](README.assets/1672716535357.png)
+
+A response message:
+
+- Start line: wheter the request has been successful or failed.
+- response headers: about the response itself.
+- response body: contains the JSON data coming back from an API or the HTML of the web page that we requested.
+
+
+
+如果是个html 发生的过程：
+
+![1672716616739](README.assets/1672716616739.png)
+
+
+
+
+
+How the TCP/IP request and response is sent across the web?
+
+TCP that defines how data travels across the web.~TCP是定义数据如何通过web传输的~
+
+![1672716932499](README.assets/1672716932499.png)
+
+The job of TCP is to break the requests and responses down into thousands of small chunks, called packets before they are sent. Once the small packets arrive at their final destination,  TCP will reassemble all the packets into the original request or response, so the each packets can take a different route through the Internet, the message can get the destination as quick as possible.
+
+
+
+![1672717168557](README.assets/1672717168557.png)
+
+Then the job of IP protocol is to send and route these packets through the Internet. It ensure that they arrive at the destination they should go using Ip addresses on each packet。
