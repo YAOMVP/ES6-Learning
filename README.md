@@ -1,4 +1,25 @@
 # ES6-Learning Review
+
+# Destructing
+
+##Destructing Arrays
+
+![1672804450491](README.assets/1672804450491.png)
+
+
+
+
+
+## Destructing Objects
+
+![1672804665107](README.assets/1672804665107.png)
+
+
+
+
+
+
+
 # Constructor and prototype
 
 ## 4 Foundamental principles of OOP
@@ -410,3 +431,46 @@ The job of TCP is to break the requests and responses down into thousands of sma
 ![1672717168557](README.assets/1672717168557.png)
 
 Then the job of IP protocol is to send and route these packets through the Internet. It ensure that they arrive at the destination they should go using Ip addresses on each packet。
+
+
+
+# Callback Hell
+
+![1672803372144](README.assets/1672803372144.png)
+
+==When we have lots of **nested callbacks**, in order to **execute asynchronous tasks in sequence**,~按顺序执行异步任务~ this happens for all asynchronous tasks, which are handled by callbacks.==
+
+
+
+
+
+# Promise
+
+![1672827820405](README.assets/1672827820405.png)
+
+(When we start the AJAX call, there is no value yet, but there will be some value in the future, we can use promise to handle the future value.)
+
+
+
+::memo: Analogy~例子~
+
+
+
+![1672828182651](README.assets/1672828182651.png)
+
+
+
+
+
+##What is the big advantage of using promise?
+
+1. We no need to rely on events and callbacks to handle asynchronous results. Events and callbacks can sometimes cause unpredictable results.
+2. Escaping callback hell. We can chain promises for a sequence of asychronous operations.
+
+
+
+::memo: Analogy
+
+The lottery draw is the asynchronous task, which determines the result, once the result is available,  the ticket would be settled. If we guessed the correct outcome, the lottery ticket would be **fulfilled**, we get money. However, if we guessed wrong, the ticket gets **rejected**, we wasted money.
+
+(We are able to handle these different states in our code. --lifecycle of promise).
