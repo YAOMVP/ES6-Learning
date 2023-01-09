@@ -104,3 +104,16 @@ getCountryAndNeighbour("Portugal");
 
 const request = fetch("https://restcountries.com/v3.1/name/Australia");
 console.log(request);
+
+const getCountryData = function(country) {
+    //Calling a fetch function will return a promise
+    //Into a then method: we need to pass a callback function that we want to be executed as soon as the promise is actually fulfilled.
+    response.json()
+    fetch(`https://restcountries.com/v3.1/name/${country}`)
+        // console.log(response);
+        //In order to be read from the body, we need to call the json method.
+        .then((response) => response.json())
+        .then((data) => renderCountry(data[0]));
+    // console.log(data);
+}
+getCountryData("France");
