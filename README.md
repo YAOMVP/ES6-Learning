@@ -50,7 +50,7 @@
 
  
 
-## :sunglasses:Prototypes p197~回顾~
+## :sunglasses:Prototypes   p197~回顾~
 
 1.Each object has a prototype.
 
@@ -278,8 +278,9 @@ for example:
 
 # Synchronous p31
 
-- Most code is synchronous 
-- Synchronous code is executed line by line
+- Most code is synchronous.
+- Synchronous code is executed line by line.
+- Each line of code waits for previous line to finish.
 
 
 
@@ -289,11 +290,15 @@ for example:
 
 Alert is blocking synchronous code. Only after we click ok, the window disappears, the next line can run!
 
-**Most of the time synchronous code is fine, and makes perfect sense, but the execution would have to wait, for example for a 5 seconds timer to finish. That would be terrible, coz meanwhile nothing happed during the 5 seconds.**
+:-1: Long-running operations block code execution.
+
+**Most of the time synchronous code is fine, and makes perfect sense, but the execution would have to wait, for example for a 5 seconds timer to finish. That would be terrible, coz meanwhile nothing happed during the 5 seconds, so asychronous code is coming from.**
 
 
 
 
+
+# Asynchronous 
 
 The callback is asynchronous, it is only going to be executed after the timer has finished. That is non-blocking. The rest of the code can keep running normally.
 
@@ -317,6 +322,10 @@ for example
 
 
 
+
+
+
+
 # AJAX
 
 Asynchronous Javascript And XML(xml Is widely used to **transmit data on the web**, recently we don ot use XML anymore, use JSON, just a javascript object convert in into string.)
@@ -331,11 +340,13 @@ Asynchronous Javascript And XML(xml Is widely used to **transmit data on the web
 
 
 
+
+
 # :sunglasses:Request-response model~请求响应模型~ / Client-server architecture~客户端-服务器架构~
 
 ![1672713492444](README.assets/1672713492444.png)
 
-When we try to access a web server, the browser which is the client, sends a request to the server, and then the server will send back a response,  that response contains the data, or the web page that we requested.  :
+When we try to access a web server, the browser which is the client, sends a request to the server, and then the server will send back a response,  that response contains the data, or the web page that we requested.    
 
 
 
@@ -343,7 +354,7 @@ When we try to access a web server, the browser which is the client, sends a req
 
 
 
-Every URL gets~有~ an HTTP(Hypertext Transfer protocol~超文本传输协议~) and HTTPS(is encrypted using TLS or SSL), which is for the ==protocol==. 
+Every URL gets~有~ an HTTP(Hypertext Transfer protocol~超文本传输协议~) or HTTPS(is encrypted using TLS or SSL), which is for the ==protocol==. 
 
 Then we have the ==Domain name==, (rest..eu), after a slash we have a so-called ==Resource== that we want to access.
 
@@ -474,3 +485,8 @@ Then the job of IP protocol is to send and route these packets through the Inter
 The lottery draw is the asynchronous task, which determines the result, once the result is available,  the ticket would be settled. If we guessed the correct outcome, the lottery ticket would be **fulfilled**, we get money. However, if we guessed wrong, the ticket gets **rejected**, we wasted money.
 
 (We are able to handle these different states in our code. --lifecycle of promise).
+
+
+
+
+

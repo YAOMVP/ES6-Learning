@@ -55,43 +55,43 @@ const renderCountry = function(data, className = "") {
 }
 
 
-const getCountryAndNeighbour = function(country) {
+// const getCountryAndNeighbour = function(country) {
 
-    // AJAX call country 1
-    const request = new XMLHttpRequest(); //Ols school way of doing this.
-    request.open("get", `https://restcountries.com/v3.1/name/${country}`);
-    request.send();
+//     // AJAX call country 1
+//     const request = new XMLHttpRequest(); //Ols school way of doing this.
+//     request.open("get", `https://restcountries.com/v3.1/name/${country}`);
+//     request.send();
 
-    request.addEventListener("load", function() {
-        // console.log(this.responseText);
-        //Convert the JSONfile
-        const [data] = JSON.parse(this.responseText);
-        console.log(data);
+//     request.addEventListener("load", function() {
+//         // console.log(this.responseText);
+//         //Convert the JSONfile
+//         const [data] = JSON.parse(this.responseText);
+//         console.log(data);
 
-        //Render country 1
-        renderCountry(data);
+//         //Render country 1
+//         renderCountry(data);
 
-        //Get neighbour country2
-        const [neighbour] = data.borders; //destructing
-        if (!neighbour) return;
+//         //Get neighbour country2
+//         const [neighbour] = data.borders; //destructing
+//         if (!neighbour) return;
 
-        // AJAX call country 2
-        const request2 = new XMLHttpRequest(); //Ols school way of doing this.
-        request2.open("get", `https://restcountries.com/v3.1/alpha/${neighbour}`);
-        request2.send();
+//         // AJAX call country 2
+//         const request2 = new XMLHttpRequest(); //Ols school way of doing this.
+//         request2.open("get", `https://restcountries.com/v3.1/alpha/${neighbour}`);
+//         request2.send();
 
-        request2.addEventListener("load", function() {
-            const [data2] = JSON.parse(this.responseText);
-            console.log(data2);
+//         request2.addEventListener("load", function() {
+//             const [data2] = JSON.parse(this.responseText);
+//             console.log(data2);
 
-            renderCountry(data2, "neighbour")
-        });
-    });
+//             renderCountry(data2, "neighbour")
+//         });
+//     });
 
-}
+// }
 
 
-getCountryAndNeighbour("Portugal");
+//getCountryAndNeighbour("Portugal");
 // 😋😋😋😋😋😋😋obj[Object.keys(obj)]  
 // getCountryData("China");
 
@@ -103,17 +103,26 @@ getCountryAndNeighbour("Portugal");
 
 
 const request = fetch("https://restcountries.com/v3.1/name/Australia");
-console.log(request);
 
 const getCountryData = function(country) {
     //Calling a fetch function will return a promise
     //Into a then method: we need to pass a callback function that we want to be executed as soon as the promise is actually fulfilled.
-    response.json()
+
+    //country 1
     fetch(`https://restcountries.com/v3.1/name/${country}`)
         // console.log(response);
         //In order to be read from the body, we need to call the json method.
         .then((response) => response.json())
-        .then((data) => renderCountry(data[0]));
-    // console.log(data);
+        .then(data => {
+            renderCountry(data[0]);
+            const neighbour = data[0].borders[0]
+
+            if (!neighbour) return;
+
+            //country2
+            return fetch(`https://restcountries.com/v3.1/alpha/${neighbour}`);
+        })
+        .then(response => response.json())
+        .then(data => renderCountry(data, "neighbour"));
 }
-getCountryData("France");
+getCountryData("Australia");
